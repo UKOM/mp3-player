@@ -81,6 +81,8 @@ public class DisplayActivity extends FragmentActivity implements IActivity {
 			}
 		});
 		
+		
+		
 	}
 	
 	public void showPlaylist(Map<String, Long> map){
@@ -127,7 +129,7 @@ public class DisplayActivity extends FragmentActivity implements IActivity {
 				pagerAdapter.destroyItem(vPager, 0, listFragment);
 				pagerAdapter.instantiateItem(vPager, 0);
 				
-				mService.setListMap(map);
+				AudioService.setListMap(map);
 			}
 		}
 	}
@@ -159,6 +161,8 @@ public class DisplayActivity extends FragmentActivity implements IActivity {
 		AudioService.setIActivity(this);
 		Intent intent = new Intent(this,AudioService.class);
 		startService(intent);
+		
+		
 		super.onStart();
 	}
 	
@@ -193,9 +197,9 @@ public class DisplayActivity extends FragmentActivity implements IActivity {
 		}
 	}
 	
-	private void initServ(){
+	public void initServ(){
 		
-		mService.setListMap(map);
+		AudioService.setListMap(map);
 		//mService.setTitles(titles);
 	}
 	

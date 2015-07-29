@@ -69,6 +69,12 @@ public class AudioService extends Service implements IService{
 	}
 	
 	private void play(String title){
+		if (listMap == null) {
+			Log.i("audioService", "listmap is null");
+		}
+		if(title == null){
+			Log.i("audioService", "title is null");
+		}
 		Long id = listMap.get(title);
 		//Log.i("AudioService", "playMp3 method is playing "+title+",it's id is "+id);
 		Uri contentUri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
@@ -120,12 +126,11 @@ public class AudioService extends Service implements IService{
 	}
 	
 	private boolean isTouching;
-	private Map<String, Long> listMap; 
+	private static Map<String, Long> listMap; 
 	
 	//以下全部为实现IServic 接口的方法，主要由前台回调，响应前台，以实现同步
 
-	@Override
-	public void setListMap(Map<String, Long> map) {
+	public static void setListMap(Map<String, Long> map) {
 		listMap = map;
 	}
 

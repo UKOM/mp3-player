@@ -33,6 +33,7 @@ public class LoadJsonTask extends AsyncTask<Void, Void, Map<String, Long>> {
 	@Override
 	protected void onPostExecute(Map<String, Long> result) {
 		mActivity.setMap(result);
+		mActivity.initServ();
 		Log.i("LoadJsonTask", result.toString());
 		mActivity.showPlaylist(result);
 	}
